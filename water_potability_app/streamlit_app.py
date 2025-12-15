@@ -500,7 +500,7 @@ with info_col3:
 st.markdown("---")
 st.markdown("""
 <div style="text-align: center; color: #888; padding: 1rem;">
-    <p>🎓 <strong>UAS Pengenalan Pemrograman Data</strong> | Universitas Gadjah Mada</p>
+    <p>🎓 <strong>UAS Praktikum Penambangan Data</strong> | Universitas Gadjah Mada</p>
     <p>Model: Random Forest Classifier | Akurasi: ~65%</p>
 </div>
 """, unsafe_allow_html=True)
