@@ -274,14 +274,35 @@ features = {
 
 # Collect input values
 input_data = {}
+
+# Add input mode selection
+st.sidebar.markdown("---")
+input_mode = st.sidebar.radio(
+    "Mode Input:",
+    ["Slider", "Manual Input"],
+    help="Pilih mode input yang Anda inginkan"
+)
+st.sidebar.markdown("---")
+
 for key, config in features.items():
-    input_data[key] = st.sidebar.slider(
-        config['label'],
-        min_value=config['min'],
-        max_value=config['max'],
-        value=config['default'],
-        help=config['help']
-    )
+    if input_mode == "Slider":
+        input_data[key] = st.sidebar.slider(
+            f"{config['icon']} {config['label']}",
+            min_value=config['min'],
+            max_value=config['max'],
+            value=config['default'],
+            help=config['help']
+        )
+    else:  # Manual Input
+        input_data[key] = st.sidebar.number_input(
+            f"{config['icon']} {config['label']}",
+            min_value=config['min'],
+            max_value=config['max'],
+            value=config['default'],
+            step=0.01 if config['max'] < 100 else 1.0,
+            help=config['help'],
+            format="%.2f"
+        )
 
 # Main content area
 col1, col2 = st.columns([2, 1])
